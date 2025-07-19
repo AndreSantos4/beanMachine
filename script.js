@@ -1,4 +1,3 @@
-// script.js
 const defaultImg = 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png'; // imagem padrão
 
 const products = [
@@ -9,34 +8,34 @@ const products = [
   { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'] },
   { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://png.pngtree.com/png-clipart/20240418/original/pngtree-summer-healthy-lemonade-png-image_14879001.png'},
   // Cafés
-  { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2x Água'] },
-  { id: 7, name: 'Caramel Machiatto', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'] },
-  { id: 8, name: 'Frapuccino Mocha', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'] },
+  { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2x Água'], img:'https://static.vecteezy.com/system/resources/previews/023/438/448/non_2x/espresso-coffee-cutout-free-png.png' },
+  { id: 7, name: 'Caramel Machiatto', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://png.pngtree.com/png-vector/20240206/ourmid/pngtree-watercolor-caramel-macchiato-png-image_11664649.png' },
+  { id: 8, name: 'Frapuccino Mocha', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://png.pngtree.com/png-vector/20230918/ourmid/pngtree-mocha-coffee-frappe-in-glass-png-image_10125631.png' },
   // Bebida com álcool
   { id: 9, name: 'Cerveja Artesanal', category: 'drink', price: 50, ingredients: ['Cachaça','Cevada','Água','Gelo'] },
-  { id: 10, name: 'Mimosa', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Morango'] },
-  { id: 11, name: 'Bellini', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Manga'] },
+  { id: 10, name: 'Mimosa', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Morango'], img:'https://static.vecteezy.com/system/resources/thumbnails/047/450/936/small/mimosa-cocktail-glass-of-mimosa-cocktail-with-orange-isolated-alcoholic-beverage-mimosa-as-refreshment-during-summertime-heats-beach-cocktail-png.png' },
+  { id: 11, name: 'Bellini', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Manga'], img:'https://png.pngtree.com/png-vector/20250121/ourmid/pngtree-bellini-cocktail-in-a-champagne-glass-png-image_15292179.png' },
   // Comidas Lunch
-  { id: 12, name: 'Double Cheese Bacon', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Pão','Cheddar','Bacon','Tomate','Hambúrguer','Alface'] },
-  { id: 13, name: 'Strogonoff de Frango', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Asinhas de Frango','Natas','Arroz','Cogumelos','Batata'] },
+  { id: 12, name: 'Double Cheese Bacon', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Pão','Cheddar','Bacon','Tomate','Hambúrguer','Alface'], img:'https://png.pngtree.com/png-vector/20240521/ourmid/pngtree-a-cheeseburger-with-bacon-and-lettuce-on-white-background-png-image_12503472.png' },
+  { id: 13, name: 'Strogonoff de Frango', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Asinhas de Frango','Natas','Arroz','Cogumelos','Batata'], img:'https://griletto.com.br/wp-content/uploads/2024/06/strogonoff.png' },
   { id: 14, name: 'Bife à BeanMachine', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Natas','Ovos','Arroz','Batata','Carne'] },
-  { id: 15, name: 'Bacalhau com natas', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Natas','Oregãos','Peixe','Batata'] },
-  { id: 16, name: 'Polvo à Lagareiro', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Oregãos','Alho','Peixe','Batata'] },
-  { id: 17, name: 'Ramen Spicy Chicken', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Camarão','Asinhas de Frango','Tomate','Noodles','Ovos'] },
+  { id: 15, name: 'Bacalhau com natas', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Natas','Oregãos','Peixe','Batata'], img:'https://ofornonovo.com/wp-content/uploads/2024/11/Peixe_Bacalhau-Natas.png' },
+  { id: 16, name: 'Polvo à Lagareiro', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Oregãos','Alho','Peixe','Batata'], img:'https://ofornonovo.com/wp-content/uploads/2024/10/Peixe_Polvo-Lagareiro.png' },
+  { id: 17, name: 'Ramen Spicy Chicken', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Camarão','Asinhas de Frango','Tomate','Noodles','Ovos'], img:'https://static.vecteezy.com/system/resources/thumbnails/051/125/508/small_2x/delicious-fried-noodles-isolated-on-transparent-background-png.png' },
   // Sobremesas Lunch
-  { id: 18, name: 'Cheesecake Oreo', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Leite','Bolacha','Açúcar'] },
-  { id: 19, name: 'Gelado Açai', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Morango','Natas','Banana','Leite','Açúcar'] },
-  { id: 20, name: 'Panna Cotta Silvestre', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Frutos Vermelhos','Leite','Açúcar'] },
-  { id: 21, name: 'Pudim Flan', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Ovos','Leite','Açúcar'] },
+  { id: 18, name: 'Cheesecake Oreo', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Leite','Bolacha','Açúcar'], img:'https://png.pngtree.com/png-clipart/20250115/original/pngtree-rich-and-creamy-oreo-cheesecake-slice-png-image_19567286.png' },
+  { id: 19, name: 'Gelado Açai', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Morango','Natas','Banana','Leite','Açúcar'], img:'https://png.pngtree.com/png-clipart/20240418/original/pngtree-acai-bowl-fresh-colorful-organic-healthy-food-png-image_14884058.png' },
+  { id: 20, name: 'Panna Cotta Silvestre', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Frutos Vermelhos','Leite','Açúcar'], img:'https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-luxurious-vanilla-panna-cotta-with-fresh-mango-puree-png-image_13215028.png' },
+  { id: 21, name: 'Pudim Flan', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Ovos','Leite','Açúcar'], img:'https://png.pngtree.com/png-vector/20240814/ourmid/pngtree-caramel-custard-dessert-creamy-flan-with-golden-png-image_13479039.png' },
   // Comidas Brunch
-  { id: 22, name: 'Quiche Lorraine', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Farinha','Bacon','Leite','Ovos'] },
-  { id: 23, name: 'Tosta de Pulled Pork', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Carne de Porco','Tomate','Pão','Alface','Cheddar','Sal'] },
+  { id: 22, name: 'Quiche Lorraine', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Farinha','Bacon','Leite','Ovos'], img:'https://png.pngtree.com/png-vector/20240131/ourmid/pngtree-quiche-lorraine-png-with-ai-generated-png-image_11575468.png' },
+  { id: 23, name: 'Tosta de Pulled Pork', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Carne de Porco','Tomate','Pão','Alface','Cheddar','Sal'], img:'https://static.vecteezy.com/system/resources/previews/051/789/955/non_2x/delicious-bbq-pulled-pork-sandwich-on-bun-free-png.png' },
   { id: 24, name: 'Tosta de Frango', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Tomate','Asinha de Frango','Cheddar','Sal','Pão','Alface'] },
-  { id: 25, name: 'Ovos mexidos e Bacon', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Leite','Ovos'] },
+  { id: 25, name: 'Ovos mexidos e Bacon', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Leite','Ovos'], img:'https://static.vecteezy.com/system/resources/previews/053/458/760/non_2x/scrambled-eggs-with-bacon-free-png.png' },
   { id: 26, name: 'Ovos Rotos', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Batatas','Ovos'] },
   // Menus
-  { id: 100, name: 'Menu Brunch', category: 'menu', price: 120, menuType: 'brunch', ingredients: [] },
-  { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [] },
+  { id: 100, name: 'Menu Brunch', category: 'menu', price: 120, menuType: 'brunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243905593476/MENU_BRUNCH_1.png?ex=687d130d&is=687bc18d&hm=f155cdae7225a3a43f251c7f4805b68dc1a4871a47bb3f00ffbf28ed0b259690&' },
+  { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
 ];
 
 let filteredProducts = [...products];
@@ -260,7 +259,7 @@ function updateCart() {
         ${includedNames}
         <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
           <button onclick="changeQty(${idx}, -1)" style="background:#222b40;color:#fff;border:none;border-radius:4px;width:28px;height:28px;font-size:18px;cursor:pointer;">−</button>
-          <input type="number" min="1" value="${item.qty}" onchange="setQty(${idx}, this.value)" style="width:40px;text-align:center;border-radius:4px;border:none;padding:4px;">
+          <input type="number" min="1" value="${item.qty}" onchange="setQty(${idx}, this.value)" style="width:max;text-align:center;border-radius:4px;border:none;padding:4px;">
           <button onclick="changeQty(${idx}, 1)" style="background:#222b40;color:#fff;border:none;border-radius:4px;width:28px;height:28px;font-size:18px;cursor:pointer;">+</button>
         </div>
       </div>
