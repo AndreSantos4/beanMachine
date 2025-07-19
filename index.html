@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bean Machine POS</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <button onclick="filterCategory('all')" title="Todos">
+            <i class="fas fa-book" style="color:#6fcf97; font-size: 28px;"></i>
+        </button>
+        <button onclick="filterCategory('food')" title="Comida">
+            <i class="fas fa-hamburger" style="color:#f2c94c; font-size: 28px;"></i>
+        </button>
+        <button onclick="filterCategory('drink')" title="Bebida">
+            <i class="fas fa-glass-water" style="color:#56ccf2; font-size: 28px;"></i>
+        </button>
+        <button onclick="filterCategory('menu')" title="Menus">
+            <i class="fas fa-bowl-food" style="color:#bb6bd9; font-size: 28px;"></i>
+        </button>
+    </aside>
+    <main class="main">
+        <header>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+                <button onclick="searchProducts()" aria-label="Pesquisar"><span class="icon">🔍</span></button>
+            </div>
+        </header>
+        <section class="grid" id="productGrid"></section>
+    </main>
+    <aside class="cart">
+        <div class="cart-list" id="cartList"></div>
+        <div class="cart-footer">
+            <button onclick="goToPreparation()" class="complete-button">Concluir (0$)</button>
+        </div>
+    </aside>
+
+    <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()" aria-label="Fechar">×</button>
+            <h3>Seleciona 1 Comida e 1 Bebida</h3>
+            <div id="menuItems"></div>
+            <button id="addMenuBtn" onclick="addMenuToCart()" disabled>Adicionar ao Carrinho</button>
+        </div>
+    </div>
+
+    <div id="productionModal" class="production-modal" style="display:none;">
+        <div class="production-content">
+            <button class="close-production" onclick="closeProduction()" aria-label="Fechar">×</button>
+            <h2>Produção</h2>
+            <div id="productionList"></div>
+            <button onclick="completeOrder()" class="complete-button">Concluir Pedido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
