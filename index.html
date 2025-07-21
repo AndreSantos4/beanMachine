@@ -49,8 +49,8 @@
     <main class="main">
         <header>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Pesquisar produto..." onkeypress="if(event.key==='Enter') searchProducts()">
-                <button onclick="searchProducts()" aria-label="Pesquisar"><span class="icon">🔍</span></button>
+                <input type="text" id="searchInput" placeholder="Pesquisar produto..." oninput="searchProducts()">
+                <button onclick="clearSearch()" aria-label="Limpar pesquisa"><span class="icon">✕</span></button>
             </div>
         </header>
         <section class="grid" id="productGrid"></section>
