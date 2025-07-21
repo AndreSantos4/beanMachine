@@ -3,44 +3,44 @@ const defaultImg = 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png'; //
 
 const products = [
   // Bebidas
-  { id: 1, name: 'Smothie Ananás e Coco', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Hortelã'] },
+  { id: 1, name: 'Smothie Ananás e Coco', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Hortelã'], img:'https://i.ibb.co/PZShrqdd/Smothie-Ananas.png' },
   { id: 2, name: 'Smothie Frutos Vermelhos', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Morango','Frutos Vermelhos','Hortelã'], img:'https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-cherry-strawberry-vanilla-smoothie-with-a-solid-png-image_12734226.png'},
-  { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://static.vecteezy.com/system/resources/thumbnails/036/258/856/small/ai-generated-fresh-orange-fruit-juice-isolated-on-transparent-background-free-png.png'},
-  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'] },
-  { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://png.pngtree.com/png-clipart/20240418/original/pngtree-summer-healthy-lemonade-png-image_14879001.png'},
+  { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://i.ibb.co/cKPBzt4Z/Smothie-Frutos.png'},
+  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'], img:'https://i.ibb.co/0yzQG38M/Sumo-Tropical.png' },
+  { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://i.ibb.co/xSjYBmSS/Limonada.png'},
   // Cafés
-  { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2x Água'], img:'https://static.vecteezy.com/system/resources/previews/023/438/448/non_2x/espresso-coffee-cutout-free-png.png' },
-  { id: 7, name: 'Caramel Machiatto', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://png.pngtree.com/png-vector/20240206/ourmid/pngtree-watercolor-caramel-macchiato-png-image_11664649.png' },
-  { id: 8, name: 'Frapuccino Mocha', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://png.pngtree.com/png-vector/20230918/ourmid/pngtree-mocha-coffee-frappe-in-glass-png-image_10125631.png' },
+  { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2* Água'], img:'https://i.ibb.co/5gnNg1zH/Expresso.png' },
+  { id: 7, name: 'Caramel Machiatto', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://i.ibb.co/s0kF2nf/Caramel-Machiato.png' },
+  { id: 8, name: 'Frapuccino Mocha', category: 'drink', price: 45, ingredients: ['Gelo','Café','Água','Leite'], img:'https://i.ibb.co/7FQ82ps/Frapuccino-Moch.png' },
   // Bebida com álcool
-  { id: 9, name: 'Cerveja Artesanal', category: 'drink', price: 50, ingredients: ['Cachaça','Cevada','Água','Gelo'] },
-  { id: 10, name: 'Mimosa', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Morango'], img:'https://static.vecteezy.com/system/resources/thumbnails/047/450/936/small/mimosa-cocktail-glass-of-mimosa-cocktail-with-orange-isolated-alcoholic-beverage-mimosa-as-refreshment-during-summertime-heats-beach-cocktail-png.png' },
-  { id: 11, name: 'Bellini', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Manga'], img:'https://png.pngtree.com/png-vector/20250121/ourmid/pngtree-bellini-cocktail-in-a-champagne-glass-png-image_15292179.png' },
+  { id: 9, name: 'Cerveja Artesanal', category: 'drink', price: 50, ingredients: ['Cachaça','Cevada','Água','Gelo'], img:'https://i.ibb.co/mCbxsYvC/Cerveja.png' },
+  { id: 10, name: 'Mimosa', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Morango'], img:'https://i.ibb.co/7JqJG0kq/Mimosa.png' },
+  { id: 11, name: 'Bellini', category: 'drink', price: 60, ingredients: ['Vodka','Gelo','Água','Manga'], img:'https://i.ibb.co/rG0JPMwV/Bellini.png' },
   // Comidas Lunch
-  { id: 12, name: 'Double Cheese Bacon', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Pão','Cheddar','Bacon','Tomate','Hambúrguer','Alface'], img:'https://png.pngtree.com/png-vector/20240521/ourmid/pngtree-a-cheeseburger-with-bacon-and-lettuce-on-white-background-png-image_12503472.png' },
-  { id: 13, name: 'Strogonoff de Frango', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Asinhas de Frango','Natas','Arroz','Cogumelos','Batata'], img:'https://griletto.com.br/wp-content/uploads/2024/06/strogonoff.png' },
-  { id: 14, name: 'Bife à BeanMachine', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Natas','Ovos','Arroz','Batata','Carne'] },
-  { id: 15, name: 'Bacalhau com natas', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Natas','Oregãos','Peixe','Batata'], img:'https://ofornonovo.com/wp-content/uploads/2024/11/Peixe_Bacalhau-Natas.png' },
-  { id: 16, name: 'Polvo à Lagareiro', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Oregãos','Alho','Peixe','Batata'], img:'https://ofornonovo.com/wp-content/uploads/2024/10/Peixe_Polvo-Lagareiro.png' },
-  { id: 17, name: 'Ramen Spicy Chicken', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Camarão','Asinhas de Frango','Tomate','Noodles','Ovos'], img:'https://static.vecteezy.com/system/resources/thumbnails/051/125/508/small_2x/delicious-fried-noodles-isolated-on-transparent-background-png.png' },
+  { id: 12, name: 'Double Cheese Bacon', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Pão','Cheddar','Bacon','Tomate','Hambúrguer','Alface'], img:'https://i.ibb.co/23QMcps5/Double-Chesse.png' },
+  { id: 13, name: 'Strogonoff de Frango', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Asinhas de Frango','Natas','Arroz','Cogumelos','Batata'], img:'https://i.ibb.co/fdQCD8p0/Strogonoff.png' },
+  { id: 14, name: 'Bife à BeanMachine', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Natas','Ovos','Arroz','Batata','Carne'], img:'https://i.ibb.co/NdsrNNhC/Bife-Bean.png' },
+  { id: 15, name: 'Bacalhau com natas', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Natas','Oregãos','Peixe','Batata'], img:'https://i.ibb.co/39qYk1Jb/Bacalhau-Natas.png' },
+  { id: 16, name: 'Polvo à Lagareiro', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Cebola','Oregãos','Alho','Peixe','Batata'], img:'https://i.ibb.co/wFhwCHjQ/Polvo.png' },
+  { id: 17, name: 'Ramen Spicy Chicken', category: 'food', price: 110, menuAllowed: ['lunch'], ingredients: ['Sal','Camarão','Asinhas de Frango','Tomate','Noodles','Ovos'], img:'https://i.ibb.co/TBYSszBM/Ramen.png' },
   // Sobremesas Lunch
-  { id: 18, name: 'Cheesecake Oreo', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Leite','Bolacha','Açúcar'], img:'https://png.pngtree.com/png-clipart/20250115/original/pngtree-rich-and-creamy-oreo-cheesecake-slice-png-image_19567286.png' },
-  { id: 19, name: 'Gelado Açai', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Morango','Natas','Banana','Leite','Açúcar'], img:'https://png.pngtree.com/png-clipart/20240418/original/pngtree-acai-bowl-fresh-colorful-organic-healthy-food-png-image_14884058.png' },
-  { id: 20, name: 'Panna Cotta Silvestre', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Frutos Vermelhos','Leite','Açúcar'], img:'https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-luxurious-vanilla-panna-cotta-with-fresh-mango-puree-png-image_13215028.png' },
-  { id: 21, name: 'Pudim Flan', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Ovos','Leite','Açúcar'], img:'https://png.pngtree.com/png-vector/20240814/ourmid/pngtree-caramel-custard-dessert-creamy-flan-with-golden-png-image_13479039.png' },
+  { id: 18, name: 'Cheesecake Oreo', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Leite','Bolacha','Açúcar'], img:'https://i.ibb.co/JRyJt3Qr/Oreo-Cheesecake.png' },
+  { id: 19, name: 'Gelado Açai', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Morango','Natas','Banana','Leite','Açúcar'], img:'https://i.ibb.co/cXSp9JkW/Acai.png' },
+  { id: 20, name: 'Panna Cotta Silvestre', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Frutos Vermelhos','Leite','Açúcar'], img:'https://i.ibb.co/VcCRLHQc/Panna-Cota.png' },
+  { id: 21, name: 'Pudim Flan', category: 'dessert', price: 60, menuAllowed: ['lunch'], ingredients: ['Farinha','Natas','Ovos','Leite','Açúcar'], img:'https://i.ibb.co/1tkspYBB/Pudim-Flan.png' },
   // Comidas Brunch
-  { id: 22, name: 'Quiche Lorraine', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Farinha','Bacon','Leite','Ovos'], img:'https://png.pngtree.com/png-vector/20240131/ourmid/pngtree-quiche-lorraine-png-with-ai-generated-png-image_11575468.png' },
-  { id: 23, name: 'Tosta de Pulled Pork', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Carne de Porco','Tomate','Pão','Alface','Cheddar','Sal'], img:'https://static.vecteezy.com/system/resources/previews/051/789/955/non_2x/delicious-bbq-pulled-pork-sandwich-on-bun-free-png.png' },
-  { id: 24, name: 'Tosta de Frango', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Tomate','Asinha de Frango','Cheddar','Sal','Pão','Alface'] },
-  { id: 25, name: 'Ovos mexidos e Bacon', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Leite','Ovos'], img:'https://static.vecteezy.com/system/resources/previews/053/458/760/non_2x/scrambled-eggs-with-bacon-free-png.png' },
-  { id: 26, name: 'Ovos Rotos', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Batatas','Ovos'] },
+  { id: 22, name: 'Quiche Lorraine', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Farinha','Bacon','Leite','Ovos'], img:'https://i.ibb.co/4g7gZZCt/Quiche-Lorraine.png' },
+  { id: 23, name: 'Tosta de Pulled Pork', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Carne de Porco','Tomate','Pão','Alface','Cheddar','Sal'], img:'https://i.ibb.co/xt6x4S9C/Tosta-Pulled-Pork.png' },
+  { id: 24, name: 'Tosta de Frango', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Tomate','Asinha de Frango','Cheddar','Sal','Pão','Alface'], img:'https://i.ibb.co/Kx7cbwr5/Tosta-Frango.png' },
+  { id: 25, name: 'Ovos mexidos e Bacon', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Leite','Ovos'], img:'https://i.ibb.co/6RqZ4Wtk/Ovos-Mexidos-Bacon.png' },
+  { id: 26, name: 'Ovos Rotos', category: 'food', price: 80, menuAllowed: ['brunch'], ingredients: ['Sal','Oregãos','Bacon','Batatas','Ovos'], img:'https://i.ibb.co/spT9vHvP/ovos-rotos.png'},
   // Menus
   { id: 100, name: 'Menu Brunch', category: 'menu', price: 120, menuType: 'brunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243905593476/MENU_BRUNCH_1.png?ex=687d130d&is=687bc18d&hm=f155cdae7225a3a43f251c7f4805b68dc1a4871a47bb3f00ffbf28ed0b259690&' },
   { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
   { id: 102, name: 'Menu Indonésia ESPECIAL', category: 'menu', price: 200, menuType: 'indonesia', 
     fixedItems: [
       { type: 'appetizer', name: 'Entrada Indonésia', ingredients: ['Sal', 'Cebola', 'Camarão'] },
-      { type: 'food', productId: 26 }, // Ovos Rotos ESP
+      { type: 'food', productId: 26 }, // Ovos Rotos
       { type: 'drink', name: 'Bebida Indonésia', ingredients: ['Água', 'Gasosa', 'Gelo', 'Manga'] },
       { type: 'dessert', name: 'Sobremesa Indonésia', ingredients: ['Açúcar', 'Leite', 'Natas'] },
       { type: 'coffee', productId: 6 }
@@ -62,7 +62,6 @@ function calculateIngredientsNeeded() {
     
     if (cartItem.category === 'menu') {
       if (cartItem.fixedItems) {
-        // Menu com itens fixos (como Indonésia)
         cartItem.fixedItems.forEach(fixedItem => {
           if (fixedItem.productId) {
             const product = products.find(p => p.id === fixedItem.productId);
@@ -77,7 +76,6 @@ function calculateIngredientsNeeded() {
               });
             }
           } else if (fixedItem.ingredients) {
-            // Para itens fixos sem productId, assume que são comida se não especificado
             const targetObj = (fixedItem.type === 'drink') ? drinkIngredients : foodIngredients;
             fixedItem.ingredients.forEach(ingredient => {
               const parts = ingredient.split('x');
@@ -89,7 +87,6 @@ function calculateIngredientsNeeded() {
           }
         });
       } else if (cartItem.included) {
-        // Menu com seleção de itens
         cartItem.included.forEach(item => {
           if (item.ingredients) {
             const targetObj = (item.category === 'food' || item.category === 'dessert') ? foodIngredients : drinkIngredients;
@@ -104,10 +101,11 @@ function calculateIngredientsNeeded() {
         });
       }
     } else if (cartItem.ingredients) {
-      // Item individual
       const targetObj = (cartItem.category === 'food' || cartItem.category === 'dessert') ? foodIngredients : drinkIngredients;
       cartItem.ingredients.forEach(ingredient => {
-        const parts = ingredient.split('x');
+        const parts = ingredient.split('*');
+        console.log(ingredient);
+        console.log(parts);
         const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
         const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
         
@@ -155,7 +153,6 @@ function addToCart(id) {
   const product = products.find(p => p.id === id);
   if (product.category === 'menu') {
     if (product.fixedItems) {
-      // Menu com itens fixos - adiciona diretamente
       const existing = cart.find(item => item.id === product.id && item.fixedItems);
       if (existing) {
         existing.qty += 1;
@@ -164,7 +161,6 @@ function addToCart(id) {
       }
       updateCart();
     } else {
-      // Menu com seleção - abre modal
       selectedMenuItems = { food: null, drink: null, dessert: null };
       document.getElementById('modal').dataset.menuId = id;
       renderMenuSelection();
@@ -413,114 +409,12 @@ function setQty(idx, value) {
   updateCart();
 }
 
-function goToPreparation() {
-  let html = '';
-  cart.forEach(item => {
-    html += `<div class="product-divider">
-      <b>${item.qty}x ${item.name}</b>`;
-    
-    if (item.fixedItems) {
-      // Menu com itens fixos
-      item.fixedItems.forEach(fixedItem => {
-        if (fixedItem.productId) {
-          const product = products.find(p => p.id === fixedItem.productId);
-          html += `<br><span style="margin-left:16px;font-weight:500;">- ${product ? product.name : fixedItem.name}</span>`;
-          if (product && product.ingredients && product.ingredients.length) {
-            html += `<ul class="ingredient-list">`;
-            product.ingredients.forEach(ing => {
-              const parts = ing.split('x');
-              const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
-              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
-              html += `<li>${ingredientQty}x ${ingredientName}</li>`;
-            });
-            html += `</ul>`;
-          }
-        } else {
-          html += `<br><span style="margin-left:16px;font-weight:500;">- ${fixedItem.name}</span>`;
-          if (fixedItem.ingredients && fixedItem.ingredients.length) {
-            html += `<ul class="ingredient-list">`;
-            fixedItem.ingredients.forEach(ing => {
-              const parts = ing.split('x');
-              const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
-              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
-              html += `<li>${ingredientQty}x ${ingredientName}</li>`;
-            });
-            html += `</ul>`;
-          }
-        }
-      });
-    } else if (item.included && item.included.length) {
-      // Menu com seleção
-      item.included.forEach(sub => {
-        html += `<br><span style="margin-left:16px;font-weight:500;">- ${sub.name}</span>`;
-        if (sub.ingredients && sub.ingredients.length) {
-          html += `<ul class="ingredient-list">`;
-          sub.ingredients.forEach(ing => {
-            const parts = ing.split('x');
-            const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
-            const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
-            html += `<li>${ingredientQty}x ${ingredientName}</li>`;
-          });
-          html += `</ul>`;
-        }
-      });
-    } else if (item.ingredients && item.ingredients.length) {
-      // Item individual
-      html += `<ul class="ingredient-list">`;
-      item.ingredients.forEach(ing => {
-        const parts = ing.split('x');
-        const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
-        const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
-        html += `<li>${ingredientQty}x ${ingredientName}</li>`;
-      });
-      html += `</ul>`;
-    }
-    html += `</div>`;
-  });
-  
-  document.getElementById('productionList').innerHTML = html || '<p style="text-align:center;">Nenhum produto no carrinho.</p>';
-  document.getElementById('productionModal').style.display = 'flex';
-}
-
-function closeProduction() {
-  document.getElementById('productionModal').style.display = 'none';
-}
-
-// NOVO MODAL DE RESUMO DO PEDIDO
-function completeOrder() {
-  const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  // Remove qualquer modal de resumo antigo antes de abrir um novo
-  closeOrderSummary();
-  const summaryHtml = `
-    <div class="order-summary-modal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(20,24,40,0.85);display:flex;align-items:center;justify-content:center;z-index:200;">
-      <div style="background:#23243a;padding:40px 32px;border-radius:20px;max-width:500px;width:95vw;box-shadow:0 8px 32px #0006;position:relative;">
-        <button onclick="closeOrderSummary()" style="position:absolute;top:18px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;">×</button>
-        <h2 style="text-align:center;color:#6fcf97;">Resumo do Pedido</h2>
-        <div style="margin-bottom:24px;">
-          ${cart.map(item => `<p style="font-size:18px;margin:8px 0;"><b>${item.qty}x ${item.name}</b> <span style="float:right;">${item.price}$</span></p>`).join('')}
-        </div>
-        <h3 style="text-align:center;color:#fff;">Total: <span style="color:#6fcf97;">${total}$</span></h3>
-        <button onclick="resetOrder()" class="reset-button" style="width:100%;margin-top:24px;">Resetar</button>
-      </div>
-    </div>
-  `;
-  document.body.insertAdjacentHTML('beforeend', summaryHtml);
-}
-
-function closeOrderSummary() {
-  const modal = document.querySelector('.order-summary-modal');
-  if (modal) modal.remove();
-}
-
 function resetOrder() {
   cart = [];
   filteredProducts = [...products];
   renderProducts();
   updateCart();
-  closeOrderSummary();
-  // Garante que todos os modais estejam fechados
   closeModal();
-  closeProduction();
 }
 
 renderProducts();
