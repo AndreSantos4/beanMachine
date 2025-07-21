@@ -1,3 +1,4 @@
+// script.js
 const defaultImg = 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png'; // imagem padrão
 
 const products = [
@@ -5,7 +6,7 @@ const products = [
   { id: 1, name: 'Smothie Ananás e Coco', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Hortelã'] },
   { id: 2, name: 'Smothie Frutos Vermelhos', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Morango','Frutos Vermelhos','Hortelã'], img:'https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-cherry-strawberry-vanilla-smoothie-with-a-solid-png-image_12734226.png'},
   { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://static.vecteezy.com/system/resources/thumbnails/036/258/856/small/ai-generated-fresh-orange-fruit-juice-isolated-on-transparent-background-free-png.png'},
-  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga', 'Hortelã'] },
+  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'] },
   { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://png.pngtree.com/png-clipart/20240418/original/pngtree-summer-healthy-lemonade-png-image_14879001.png'},
   // Cafés
   { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2x Água'], img:'https://static.vecteezy.com/system/resources/previews/023/438/448/non_2x/espresso-coffee-cutout-free-png.png' },
@@ -36,11 +37,81 @@ const products = [
   // Menus
   { id: 100, name: 'Menu Brunch', category: 'menu', price: 120, menuType: 'brunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243905593476/MENU_BRUNCH_1.png?ex=687d130d&is=687bc18d&hm=f155cdae7225a3a43f251c7f4805b68dc1a4871a47bb3f00ffbf28ed0b259690&' },
   { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
+  { id: 102, name: 'Menu Indonésia ESPECIAL', category: 'menu', price: 200, menuType: 'indonesia', 
+    fixedItems: [
+      { type: 'appetizer', name: 'Entrada Indonésia', ingredients: ['Sal', 'Cebola', 'Camarão'] },
+      { type: 'food', productId: 26 }, // Ovos Rotos ESP
+      { type: 'drink', name: 'Bebida Indonésia', ingredients: ['Água', 'Gasosa', 'Gelo', 'Manga'] },
+      { type: 'dessert', name: 'Sobremesa Indonésia', ingredients: ['Açúcar', 'Leite', 'Natas'] },
+      { type: 'coffee', productId: 6 }
+    ],
+    ingredients: []
+  },
 ];
 
 let filteredProducts = [...products];
 let cart = [];
 let selectedMenuItems = { food: null, drink: null, dessert: null };
+
+function calculateIngredientsNeeded() {
+  const ingredientCount = {};
+  
+  cart.forEach(cartItem => {
+    const quantity = cartItem.qty;
+    
+    if (cartItem.category === 'menu') {
+      if (cartItem.fixedItems) {
+        // Menu com itens fixos (como Indonésia)
+        cartItem.fixedItems.forEach(fixedItem => {
+          if (fixedItem.productId) {
+            const product = products.find(p => p.id === fixedItem.productId);
+            if (product && product.ingredients) {
+              product.ingredients.forEach(ingredient => {
+                const parts = ingredient.split('x');
+                const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
+                const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
+                
+                ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+              });
+            }
+          } else if (fixedItem.ingredients) {
+            fixedItem.ingredients.forEach(ingredient => {
+              const parts = ingredient.split('x');
+              const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
+              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
+              
+              ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+            });
+          }
+        });
+      } else if (cartItem.included) {
+        // Menu com seleção de itens
+        cartItem.included.forEach(item => {
+          if (item.ingredients) {
+            item.ingredients.forEach(ingredient => {
+              const parts = ingredient.split('x');
+              const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
+              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
+              
+              ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+            });
+          }
+        });
+      }
+    } else if (cartItem.ingredients) {
+      // Item individual
+      cartItem.ingredients.forEach(ingredient => {
+        const parts = ingredient.split('x');
+        const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
+        const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
+        
+        ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+      });
+    }
+  });
+  
+  return ingredientCount;
+}
 
 function renderProducts() {
   const grid = document.getElementById('productGrid');
@@ -55,7 +126,10 @@ function renderProducts() {
       <small>${product.category.charAt(0).toUpperCase() + product.category.slice(1)} • ${product.price}$</small>
       <button onclick="addToCart(${product.id})">Adicionar</button>
     `;
-    grid.appendChild(card);
+    
+    if(product.price > 0){
+      grid.appendChild(card);
+    }
   });
 }
 
@@ -74,13 +148,24 @@ function searchProducts() {
 function addToCart(id) {
   const product = products.find(p => p.id === id);
   if (product.category === 'menu') {
-    // Reset selections when opening modal
-    selectedMenuItems = { food: null, drink: null, dessert: null };
-    document.getElementById('modal').dataset.menuId = id;
-    renderMenuSelection();
-    document.getElementById('modal').style.display = 'flex';
+    if (product.fixedItems) {
+      // Menu com itens fixos - adiciona diretamente
+      const existing = cart.find(item => item.id === product.id && item.fixedItems);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      updateCart();
+    } else {
+      // Menu com seleção - abre modal
+      selectedMenuItems = { food: null, drink: null, dessert: null };
+      document.getElementById('modal').dataset.menuId = id;
+      renderMenuSelection();
+      document.getElementById('modal').style.display = 'flex';
+    }
   } else {
-    const existing = cart.find(item => item.id === product.id && !item.included);
+    const existing = cart.find(item => item.id === product.id && !item.included && !item.fixedItems);
     if (existing) {
       existing.qty += 1;
     } else {
@@ -243,13 +328,26 @@ function updateCart() {
   const list = document.getElementById('cartList');
   list.innerHTML = '';
   let total = 0;
+  
   cart.forEach((item, idx) => {
     let includedNames = '';
-    if (item.included) {
+    if (item.fixedItems) {
+      // Menu com itens fixos
+      item.fixedItems.forEach(fixedItem => {
+        if (fixedItem.productId) {
+          const product = products.find(p => p.id === fixedItem.productId);
+          includedNames += `<br><small style="margin-left:10px;">- ${product ? product.name : fixedItem.name}</small>`;
+        } else {
+          includedNames += `<br><small style="margin-left:10px;">- ${fixedItem.name}</small>`;
+        }
+      });
+    } else if (item.included) {
+      // Menu com seleção
       item.included.forEach(sub => {
         includedNames += `<br><small style="margin-left:10px;">- ${sub.name}</small>`;
       });
     }
+    
     list.innerHTML += `
       <div>
         <p>
@@ -266,6 +364,18 @@ function updateCart() {
     `;
     total += item.price * item.qty;
   });
+  
+  // Adicionar lista de ingredientes necessários
+  const ingredientsNeeded = calculateIngredientsNeeded();
+  if (Object.keys(ingredientsNeeded).length > 0) {
+    let ingredientsList = '<div style="background:#181c2f;padding:12px;border-radius:8px;margin-top:16px;"><h4 style="margin:0 0 8px 0;color:#6fcf97;">Ingredientes Necessários:</h4>';
+    Object.entries(ingredientsNeeded).forEach(([ingredient, count]) => {
+      ingredientsList += `<small style="display:block;margin:2px 0;">${count}x ${ingredient}</small>`;
+    });
+    ingredientsList += '</div>';
+    list.innerHTML += ingredientsList;
+  }
+  
   document.querySelector('.cart-footer button').innerText = `Concluir (${total}$)`;
 }
 
@@ -289,29 +399,65 @@ function goToPreparation() {
     html += `<div class="product-divider">
       <b>${item.qty}x ${item.name}</b>`;
     
-    // Para menus, mostra os items incluídos
-    if (item.included && item.included.length) {
+    if (item.fixedItems) {
+      // Menu com itens fixos
+      item.fixedItems.forEach(fixedItem => {
+        if (fixedItem.productId) {
+          const product = products.find(p => p.id === fixedItem.productId);
+          html += `<br><span style="margin-left:16px;font-weight:500;">- ${product ? product.name : fixedItem.name}</span>`;
+          if (product && product.ingredients && product.ingredients.length) {
+            html += `<ul class="ingredient-list">`;
+            product.ingredients.forEach(ing => {
+              const parts = ing.split('x');
+              const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
+              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
+              html += `<li>${ingredientQty}x ${ingredientName}</li>`;
+            });
+            html += `</ul>`;
+          }
+        } else {
+          html += `<br><span style="margin-left:16px;font-weight:500;">- ${fixedItem.name}</span>`;
+          if (fixedItem.ingredients && fixedItem.ingredients.length) {
+            html += `<ul class="ingredient-list">`;
+            fixedItem.ingredients.forEach(ing => {
+              const parts = ing.split('x');
+              const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
+              const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
+              html += `<li>${ingredientQty}x ${ingredientName}</li>`;
+            });
+            html += `</ul>`;
+          }
+        }
+      });
+    } else if (item.included && item.included.length) {
+      // Menu com seleção
       item.included.forEach(sub => {
         html += `<br><span style="margin-left:16px;font-weight:500;">- ${sub.name}</span>`;
         if (sub.ingredients && sub.ingredients.length) {
           html += `<ul class="ingredient-list">`;
           sub.ingredients.forEach(ing => {
-            html += `<li>${ing}</li>`;
+            const parts = ing.split('x');
+            const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
+            const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
+            html += `<li>${ingredientQty}x ${ingredientName}</li>`;
           });
           html += `</ul>`;
         }
       });
-    } 
-    // Para items individuais, mostra os ingredientes diretamente
-    else if (item.ingredients && item.ingredients.length) {
+    } else if (item.ingredients && item.ingredients.length) {
+      // Item individual
       html += `<ul class="ingredient-list">`;
       item.ingredients.forEach(ing => {
-        html += `<li>${ing}</li>`;
+        const parts = ing.split('x');
+        const ingredientName = parts.length > 1 ? parts[1].trim() : ing;
+        const ingredientQty = parts.length > 1 ? parseInt(parts[0]) * item.qty : item.qty;
+        html += `<li>${ingredientQty}x ${ingredientName}</li>`;
       });
       html += `</ul>`;
     }
     html += `</div>`;
   });
+  
   document.getElementById('productionList').innerHTML = html || '<p style="text-align:center;">Nenhum produto no carrinho.</p>';
   document.getElementById('productionModal').style.display = 'flex';
 }
