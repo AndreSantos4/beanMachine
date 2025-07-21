@@ -39,11 +39,10 @@ const products = [
   { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
   { id: 102, name: 'Menu Indonésia ESPECIAL', category: 'menu', price: 200, menuType: 'indonesia', 
     fixedItems: [
-      { type: 'appetizer', name: 'Entrada Indonésia', ingredients: ['Sal', 'Cebola', 'Camarão'] },
-      { type: 'food', productId: 26 }, // Ovos Rotos
-      { type: 'drink', name: 'Bebida Indonésia', ingredients: ['Água', 'Gasosa', 'Gelo', 'Manga'] },
-      { type: 'dessert', name: 'Sobremesa Indonésia', ingredients: ['Açúcar', 'Leite', 'Natas'] },
-      { type: 'coffee', productId: 6 }
+      { type: 'appetizer', name: 'Poh pia tod', ingredients: ['Cenoura', 'Camarão', 'Farinha', 'Pepino', 'Molho Cocktail', 'Sal'] },
+      { type: 'food', name: 'Pad Thai', ingredients: ['Cenoura', 'Camarão', 'Noodles', 'Asinhas de Frango', 'Molho Cocktail', 'Lima'] }, // Ovos Rotos
+      { type: 'drink', name: 'Cha Yen', ingredients: ['Natas', 'Hortelã', 'Açúcar', 'Água', 'Gasosa', 'Gelo'] },
+      { type: 'dessert', name: 'Khao Niew Mamuang', ingredients: ['Arroz', 'Hortelã', 'Manga', 'Natas', 'Açúcar', 'Leite'] }
     ],
     ingredients: []
   },
