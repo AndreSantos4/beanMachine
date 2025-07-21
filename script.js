@@ -6,7 +6,7 @@ const products = [
   { id: 1, name: 'Smothie Ananás e Coco', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Hortelã'], img:'https://i.ibb.co/PZShrqdd/Smothie-Ananas.png' },
   { id: 2, name: 'Smothie Frutos Vermelhos', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Morango','Frutos Vermelhos','Hortelã'], img:'https://i.ibb.co/cKPBzt4Z/Smothie-Frutos.png'},
   { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://i.ibb.co/PvqfQLFH/vecteezy-orange-juice-with-ice-and-mint-leaves-on-transparent-background-48340387.png'},
-  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'], img:'https://i.ibb.co/0yzQG38M/Sumo-Tropical.png' },
+  { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga', 'Hortelã'], img:'https://i.ibb.co/0yzQG38M/Sumo-Tropical.png' },
   { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://i.ibb.co/xSjYBmSS/Limonada.png'},
   // Cafés
   { id: 6, name: 'Café Expresso', category: 'drink', price: 40, ingredients: ['Café','2* Água'], img:'https://i.ibb.co/5gnNg1zH/Expresso.png' },
