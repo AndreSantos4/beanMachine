@@ -4,8 +4,8 @@ const defaultImg = 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png'; //
 const products = [
   // Bebidas
   { id: 1, name: 'Smothie Ananás e Coco', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Hortelã'], img:'https://i.ibb.co/PZShrqdd/Smothie-Ananas.png' },
-  { id: 2, name: 'Smothie Frutos Vermelhos', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Morango','Frutos Vermelhos','Hortelã'], img:'https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-cherry-strawberry-vanilla-smoothie-with-a-solid-png-image_12734226.png'},
-  { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://i.ibb.co/cKPBzt4Z/Smothie-Frutos.png'},
+  { id: 2, name: 'Smothie Frutos Vermelhos', category: 'drink', price: 60, menuAllowed: ['lunch'], ingredients: ['Água','Gasosa','Gelo','Morango','Frutos Vermelhos','Hortelã'], img:'https://i.ibb.co/cKPBzt4Z/Smothie-Frutos.png'},
+  { id: 3, name: 'Sumo de Laranja Natural', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Laranja','Hortelã'], img:'https://i.ibb.co/PvqfQLFH/vecteezy-orange-juice-with-ice-and-mint-leaves-on-transparent-background-48340387.png'},
   { id: 4, name: 'Sumo Tropical', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Leite','Manga'], img:'https://i.ibb.co/0yzQG38M/Sumo-Tropical.png' },
   { id: 5, name: 'Limonada', category: 'drink', price: 50, menuAllowed: ['brunch', 'lunch'], ingredients: ['Água','Gasosa','Gelo','Lima','Limão','Hortelã'], img:'https://i.ibb.co/xSjYBmSS/Limonada.png'},
   // Cafés
@@ -37,13 +37,12 @@ const products = [
   // Menus
   { id: 100, name: 'Menu Brunch', category: 'menu', price: 120, menuType: 'brunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243905593476/MENU_BRUNCH_1.png?ex=687d130d&is=687bc18d&hm=f155cdae7225a3a43f251c7f4805b68dc1a4871a47bb3f00ffbf28ed0b259690&' },
   { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
-  { id: 102, name: 'Menu Indonésia ESPECIAL', category: 'menu', price: 200, menuType: 'indonesia', 
+  { id: 102, name: 'Menu Especial', category: 'menu', price: 200, menuType: 'indonesia', 
     fixedItems: [
-      { type: 'appetizer', name: 'Entrada Indonésia', ingredients: ['Sal', 'Cebola', 'Camarão'] },
-      { type: 'food', productId: 26 }, // Ovos Rotos
-      { type: 'drink', name: 'Bebida Indonésia', ingredients: ['Água', 'Gasosa', 'Gelo', 'Manga'] },
-      { type: 'dessert', name: 'Sobremesa Indonésia', ingredients: ['Açúcar', 'Leite', 'Natas'] },
-      { type: 'coffee', productId: 6 }
+      { type: 'appetizer', name: 'Poh pia tod', ingredients: ['Cenoura', 'Camarão', 'Farinha', 'Pepino', 'Molho Cocktail', 'Sal'] },
+      { type: 'food', name: 'Pad Thai', ingredients: ['Cenoura', 'Camarão', 'Noodles', 'Asinhas de Frango', 'Molho Cocktail', 'Lima'] },
+      { type: 'drink', name: 'Cha Yen', ingredients: ['Natas', 'Hortelã', 'Açúcar', 'Água', 'Gasosa', 'Gelo'] },
+      { type: 'dessert', name: 'Khao Niew Mamuang', ingredients: ['Arroz', 'Hortelã', 'Manga', 'Natas', 'Açúcar', 'Leite'] }
     ],
     ingredients: []
   },
@@ -68,7 +67,7 @@ function calculateIngredientsNeeded() {
             if (product && product.ingredients) {
               const targetObj = (product.category === 'food' || product.category === 'dessert') ? foodIngredients : drinkIngredients;
               product.ingredients.forEach(ingredient => {
-                const parts = ingredient.split('x');
+                const parts = ingredient.split('*');
                 const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
                 const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
                 
@@ -78,7 +77,7 @@ function calculateIngredientsNeeded() {
           } else if (fixedItem.ingredients) {
             const targetObj = (fixedItem.type === 'drink') ? drinkIngredients : foodIngredients;
             fixedItem.ingredients.forEach(ingredient => {
-              const parts = ingredient.split('x');
+              const parts = ingredient.split('*');
               const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
               const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
               
@@ -91,7 +90,7 @@ function calculateIngredientsNeeded() {
           if (item.ingredients) {
             const targetObj = (item.category === 'food' || item.category === 'dessert') ? foodIngredients : drinkIngredients;
             item.ingredients.forEach(ingredient => {
-              const parts = ingredient.split('x');
+              const parts = ingredient.split('*');
               const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
               const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
               
@@ -398,6 +397,7 @@ function updateCart() {
     if (Object.keys(ingredientsNeeded.drink).length > 0) {
       ingredientsList += '<h4 style="margin:8px 0 8px 0;color:#56ccf2;display:flex;align-items:center;gap:8px;"><i class="fas fa-glass-water"></i>Bebidas:</h4>';
       Object.entries(ingredientsNeeded.drink).forEach(([ingredient, count]) => {
+        console.log(ingredient);
         ingredientsList += `<small style="display:block;margin:2px 0 2px 24px;">${count}x ${ingredient}</small>`;
       });
     }
