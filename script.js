@@ -54,7 +54,8 @@ let cart = [];
 let selectedMenuItems = { food: null, drink: null, dessert: null };
 
 function calculateIngredientsNeeded() {
-  const ingredientCount = {};
+  const foodIngredients = {};
+  const drinkIngredients = {};
   
   cart.forEach(cartItem => {
     const quantity = cartItem.qty;
@@ -66,21 +67,24 @@ function calculateIngredientsNeeded() {
           if (fixedItem.productId) {
             const product = products.find(p => p.id === fixedItem.productId);
             if (product && product.ingredients) {
+              const targetObj = (product.category === 'food' || product.category === 'dessert') ? foodIngredients : drinkIngredients;
               product.ingredients.forEach(ingredient => {
                 const parts = ingredient.split('x');
                 const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
                 const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
                 
-                ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+                targetObj[ingredientName] = (targetObj[ingredientName] || 0) + (ingredientQty * quantity);
               });
             }
           } else if (fixedItem.ingredients) {
+            // Para itens fixos sem productId, assume que são comida se não especificado
+            const targetObj = (fixedItem.type === 'drink') ? drinkIngredients : foodIngredients;
             fixedItem.ingredients.forEach(ingredient => {
               const parts = ingredient.split('x');
               const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
               const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
               
-              ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+              targetObj[ingredientName] = (targetObj[ingredientName] || 0) + (ingredientQty * quantity);
             });
           }
         });
@@ -88,29 +92,31 @@ function calculateIngredientsNeeded() {
         // Menu com seleção de itens
         cartItem.included.forEach(item => {
           if (item.ingredients) {
+            const targetObj = (item.category === 'food' || item.category === 'dessert') ? foodIngredients : drinkIngredients;
             item.ingredients.forEach(ingredient => {
               const parts = ingredient.split('x');
               const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
               const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
               
-              ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+              targetObj[ingredientName] = (targetObj[ingredientName] || 0) + (ingredientQty * quantity);
             });
           }
         });
       }
     } else if (cartItem.ingredients) {
       // Item individual
+      const targetObj = (cartItem.category === 'food' || cartItem.category === 'dessert') ? foodIngredients : drinkIngredients;
       cartItem.ingredients.forEach(ingredient => {
         const parts = ingredient.split('x');
         const ingredientName = parts.length > 1 ? parts[1].trim() : ingredient;
         const ingredientQty = parts.length > 1 ? parseInt(parts[0]) : 1;
         
-        ingredientCount[ingredientName] = (ingredientCount[ingredientName] || 0) + (ingredientQty * quantity);
+        targetObj[ingredientName] = (targetObj[ingredientName] || 0) + (ingredientQty * quantity);
       });
     }
   });
   
-  return ingredientCount;
+  return { food: foodIngredients, drink: drinkIngredients };
 }
 
 function renderProducts() {
@@ -365,13 +371,27 @@ function updateCart() {
     total += item.price * item.qty;
   });
   
-  // Adicionar lista de ingredientes necessários
+  // Adicionar lista de ingredientes necessários separada por categoria
   const ingredientsNeeded = calculateIngredientsNeeded();
-  if (Object.keys(ingredientsNeeded).length > 0) {
-    let ingredientsList = '<div style="background:#181c2f;padding:12px;border-radius:8px;margin-top:16px;"><h4 style="margin:0 0 8px 0;color:#6fcf97;">Ingredientes Necessários:</h4>';
-    Object.entries(ingredientsNeeded).forEach(([ingredient, count]) => {
-      ingredientsList += `<small style="display:block;margin:2px 0;">${count}x ${ingredient}</small>`;
-    });
+  if (Object.keys(ingredientsNeeded.food).length > 0 || Object.keys(ingredientsNeeded.drink).length > 0) {
+    let ingredientsList = '<div style="background:#181c2f;padding:12px;border-radius:8px;margin-top:16px;">';
+    ingredientsList += '<h3 style="margin:0 0 8px 0;color:#fff;display:flex;align-items:center;gap:8px;"><i class="fas fa-utensils"></i>Ingredientes Necessários</h3>';
+    // Ingredientes de Comida
+    if (Object.keys(ingredientsNeeded.food).length > 0) {
+      ingredientsList += '<h4 style="margin:0 0 8px 0;color:#f2c94c;display:flex;align-items:center;gap:8px;"><i class="fas fa-hamburger"></i>Comida:</h4>';
+      Object.entries(ingredientsNeeded.food).forEach(([ingredient, count]) => {
+        ingredientsList += `<small style="display:block;margin:2px 0 2px 24px;">${count}x ${ingredient}</small>`;
+      });
+    }
+    
+    // Ingredientes de Bebida
+    if (Object.keys(ingredientsNeeded.drink).length > 0) {
+      ingredientsList += '<h4 style="margin:8px 0 8px 0;color:#56ccf2;display:flex;align-items:center;gap:8px;"><i class="fas fa-glass-water"></i>Bebidas:</h4>';
+      Object.entries(ingredientsNeeded.drink).forEach(([ingredient, count]) => {
+        ingredientsList += `<small style="display:block;margin:2px 0 2px 24px;">${count}x ${ingredient}</small>`;
+      });
+    }
+    
     ingredientsList += '</div>';
     list.innerHTML += ingredientsList;
   }
