@@ -11,36 +11,55 @@
 
 <body>
     <aside class="sidebar">
-        <button onclick="filterCategory('all')" title="Todos">
-            <i class="fas fa-book" style="color:#6fcf97; font-size: 28px;"></i>
-        </button>
-        <hr>
-        <button onclick="filterCategory('food')" title="Comida">
-            <i class="fas fa-hamburger" style="color:#f2c94c; font-size: 28px;"></i>
-        </button>
-        <button onclick="filterCategory('drink')" title="Bebida">
-            <i class="fas fa-glass-water" style="color:#56ccf2; font-size: 28px;"></i>
-        </button>
-        <button onclick="filterCategory('dessert')" title="Sobremesa">
-            <i class="fas fa-ice-cream" style="color:#f25656; font-size: 28px;"></i>
-        </button>
-        <button onclick="filterCategory('menu')" title="Menus">
-            <i class="fas fa-bowl-food" style="color:#bb6bd9; font-size: 28px;"></i>
-        </button>
+        <!-- Categorias Principais -->
+        <div class="sidebar-section">
+            <button onclick="filterCategory('all')" title="Todos">
+                <i class="fas fa-book icon" style="color:#ffffff;"></i>
+            </button>
+            
+            <div class="section-divider"></div>
+            
+            <button onclick="filterCategory('food')" title="Comida">
+                <i class="fas fa-hamburger icon" style="color:#ffffff;"></i>
+            </button>
+            <button onclick="filterCategory('drink')" title="Bebida">
+                <i class="fas fa-glass-water icon" style="color:#ffffff;"></i>
+            </button>
+            <button onclick="filterCategory('dessert')" title="Sobremesa">
+                <i class="fas fa-ice-cream icon" style="color:#ffffff;"></i>
+            </button>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Menus -->
+        <div class="sidebar-section">
+            <button class="menu-button" onclick="addToCart(100)" title="Menu Brunch">
+                Brunch
+            </button>
+            <button class="menu-button" onclick="addToCart(101)" title="Menu Lunch">
+                Lunch
+            </button>
+            <button class="menu-button" onclick="addToCart(102)" title="Menu Indonésia">
+                Indo
+            </button>
+        </div>
     </aside>
+
     <main class="main">
         <header>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+                <input type="text" id="searchInput" placeholder="Pesquisar produto..." onkeypress="if(event.key==='Enter') searchProducts()">
                 <button onclick="searchProducts()" aria-label="Pesquisar"><span class="icon">🔍</span></button>
             </div>
         </header>
         <section class="grid" id="productGrid"></section>
     </main>
+
     <aside class="cart">
         <div class="cart-list" id="cartList"></div>
         <div class="cart-footer">
-            <button onclick="goToPreparation()" class="complete-button">Concluir (0$)</button>
+            <button onclick="resetOrder()" class="complete-button">Concluir (0$)</button>
         </div>
     </aside>
 
@@ -50,15 +69,6 @@
             <h3>Seleciona 1 Comida e 1 Bebida</h3>
             <div id="menuItems"></div>
             <button id="addMenuBtn" onclick="addMenuToCart()" disabled>Adicionar ao Carrinho</button>
-        </div>
-    </div>
-
-    <div id="productionModal" class="production-modal" style="display:none;">
-        <div class="production-content">
-            <button class="close-production" onclick="closeProduction()" aria-label="Fechar">×</button>
-            <h2>Produção</h2>
-            <div id="productionList"></div>
-            <button onclick="completeOrder()" class="complete-button">Concluir Pedido</button>
         </div>
     </div>
 
