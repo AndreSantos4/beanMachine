@@ -44,8 +44,7 @@ const products = [
       { type: 'drink', name: 'Cha Yen', ingredients: ['Natas', 'Hortelã', 'Açúcar', 'Água', 'Gasosa', 'Gelo'] },
       { type: 'dessert', name: 'Khao Niew Mamuang', ingredients: ['Arroz', 'Hortelã', 'Manga', 'Natas', 'Açúcar', 'Leite'] }
     ],
-    ingredients: []
-  },
+    ingredients: [], img:'https://i.ibb.co/0yF9MfG5/5-festival-gastronomico-esquina-do-mundo-abre-inscricoes.png' },
 ];
 
 let filteredProducts = [...products];
