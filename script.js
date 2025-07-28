@@ -39,10 +39,9 @@ const products = [
   { id: 101, name: 'Menu Lunch', category: 'menu', price: 180, menuType: 'lunch', ingredients: [], img:'https://cdn.discordapp.com/attachments/1369977254691606592/1396160243691688038/MENU_BRUNCH_2.png?ex=687d130d&is=687bc18d&hm=b78479f43bbae043b8629519c9f89e6bc3543a9af6e02edaf8fe131fbe9a1d66&' },
   { id: 102, name: 'Menu Especial', category: 'menu', price: 200, menuType: 'indonesia', 
     fixedItems: [
-      { type: 'appetizer', name: 'Poh pia tod', ingredients: ['Cenoura', 'Camarão', 'Farinha', 'Pepino', 'Molho Cocktail', 'Sal'] },
-      { type: 'food', name: 'Pad Thai', ingredients: ['Cenoura', 'Camarão', 'Noodles', 'Asinhas de Frango', 'Molho Cocktail', 'Lima'] },
-      { type: 'drink', name: 'Cha Yen', ingredients: ['Natas', 'Hortelã', 'Açúcar', 'Água', 'Gasosa', 'Gelo'] },
-      { type: 'dessert', name: 'Khao Niew Mamuang', ingredients: ['Arroz', 'Hortelã', 'Manga', 'Natas', 'Açúcar', 'Leite'] }
+      { type: 'food', name: 'Cachupa Rico', ingredients: ['Carne Cortada', 'Camarão', 'Cenoura', 'Milho', 'Carne de Porco', 'Couve'] },
+      { type: 'drink', name: 'Sumo Manga & Maracujá', ingredients: ['Manga', 'Gasosa', 'Açúcar', 'Água', 'Gelo', 'Hortelã'] },
+      { type: 'dessert', name: 'Doce de Papaya & Queijo', ingredients: ['Manga', 'Água', 'Fatias de Queijo', 'Açúcar', 'Pão'] }
     ],
     ingredients: [], img:'https://i.ibb.co/0yF9MfG5/5-festival-gastronomico-esquina-do-mundo-abre-inscricoes.png' },
 ];
