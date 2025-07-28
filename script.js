@@ -40,7 +40,7 @@ const products = [
   { id: 102, name: 'Menu Especial', category: 'menu', price: 200, menuType: 'indonesia', 
     fixedItems: [
       { type: 'food', name: 'Cachupa Rico', ingredients: ['Carne Cortada', 'Camarão', 'Cenoura', 'Milho', 'Carne de Porco', 'Couve'] },
-      { type: 'drink', name: '2* Sumo Manga & Maracujá', ingredients: ['Manga', 'Gasosa', 'Açúcar', 'Água', 'Gelo', 'Hortelã'] },
+      { type: 'drink', name: 'Sumo Manga & Maracujá', ingredients: ['2* Manga', '2* Gasosa', '2* Açúcar', '2* Água', '2* Gelo', '2* Hortelã'] },
       { type: 'dessert', name: 'Doce de Papaya & Queijo', ingredients: ['Manga', 'Água', 'Fatias de Queijo', 'Açúcar', 'Pão'] }
     ],
     ingredients: [], img:'https://i.ibb.co/0yF9MfG5/5-festival-gastronomico-esquina-do-mundo-abre-inscricoes.png' },
